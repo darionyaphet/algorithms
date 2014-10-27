@@ -5,4 +5,4 @@
  * @author darion
  *
  */
-package org.darion.algorithms.sort;
+package org.darion.leetcode;

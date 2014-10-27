@@ -8,7 +8,15 @@ public class BubbleSort extends BaseSort {
 
 	@Override
 	public void sort() {
-
+		for (int i = 0; i < array.length; i++) {
+			for (int j = array.length - 1; j > i; j--) {
+				if (array[j] < array[j - 1]) {
+					int tmp = array[j];
+					array[j] = array[j - 1];
+					array[j - 1] = tmp;
+				}
+			}
+		}
 	}
 
 	public static void main(String[] args) {
