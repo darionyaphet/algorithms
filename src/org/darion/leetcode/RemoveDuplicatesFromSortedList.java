@@ -27,7 +27,7 @@ public class RemoveDuplicatesFromSortedList {
 	public ListNode deleteDuplicates(ListNode head) {
 		ListNode root = head;
 		ListNode list;
-		
+
 		while (root != null) {
 			if (root.next == null) {
 				System.out.println(root.val);
@@ -54,7 +54,7 @@ public class RemoveDuplicatesFromSortedList {
 
 		RemoveDuplicatesFromSortedList sortedList = new RemoveDuplicatesFromSortedList();
 		ListNode result = sortedList.deleteDuplicates(node);
-		// result.demp();
+//		result.demp();
 	}
 
 }
