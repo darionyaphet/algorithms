@@ -12,4 +12,10 @@ public class Backpack {
 		// write your code here
 		return 0;
 	}
+
+	public static void main(String[] args) {
+		Backpack backpack = new Backpack();
+		int[] array = { 1, 2, 3 };
+		System.out.println(backpack.backPack(1, array));
+	}
 }
