@@ -2,7 +2,6 @@ package org.darion.leetcode;
 
 public class CompareVersionNumbers {
 	public int compareVersion(String version1, String version2) {
-		// smart solusion
 		String[] version1s = version1.split("\\.");
 		String[] version2s = version2.split("\\.");
 		int size = version1s.length > version2s.length ? version1s.length
