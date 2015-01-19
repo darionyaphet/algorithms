@@ -1,9 +1,9 @@
 package org.darion.leetcode;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class ValidParentheses {
 	public boolean isValid(String s) {
@@ -12,35 +12,29 @@ public class ValidParentheses {
 		map.put('{', '}');
 		map.put('[', ']');
 
-		Set<Character> ends = new HashSet<Character>();
-		ends.add(']');
-		ends.add(')');
-		ends.add('}');
-
-		char[] array = s.toCharArray();
-		boolean in = false;
-		for (int head = 0; head < array.length; head++) {
-			if (in && ends.contains(array[head])) {
-				return false;
-			}
-
-			if (map.keySet().contains(array[head])) {
-				in = true;
-				boolean flag = false;
-				for (int tail = array.length - 1; tail > head; tail--) {
-					if (array[tail] == map.get(array[head])) {
-						flag = true;
-						in = false;
-						break;
-					}
+		Deque<Character> stack = new ArrayDeque<Character>();
+		for (Character character : s.toCharArray()) {
+			if (map.keySet().contains(character)) {
+				stack.push(character);
+			} else {
+				if (stack.isEmpty()) {
+					return false;
 				}
 
-				if (!flag) {
-					return flag;
+				Character top = stack.pop();
+				// System.out.println("top : "+top);
+				if (!map.get(top).equals(character)) {
+					return false;
 				}
 			}
 		}
-		return true;
+
+		// System.out.println(stack.size());
+		if (stack.size() == 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public static void main(String[] args) {
@@ -48,5 +42,10 @@ public class ValidParentheses {
 		System.out.println(parentheses.isValid("()[]{}"));
 		System.out.println(parentheses.isValid("([{}[]]){}"));
 		System.out.println(parentheses.isValid("]"));
+		System.out.println(parentheses.isValid("([)]"));
+		System.out.println(parentheses.isValid("({}[)]"));
+
+		System.out.println(parentheses.isValid("(]"));
+		System.out.println(parentheses.isValid("([)]"));
 	}
 }
