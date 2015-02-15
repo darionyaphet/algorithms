@@ -36,4 +36,18 @@ public class TreeNode<E> {
 		this.right = right;
 	}
 
+	public boolean hasLeft() {
+		return left != null ? true : false;
+	}
+
+	public boolean hasRight() {
+		return right != null ? true : false;
+	}
+
+	@Override
+	public String toString() {
+		// return "[" + element + "\t" + left.getElement() + "\t"
+		// + right.getElement() + "]";
+		return element.toString();
+	}
 }
