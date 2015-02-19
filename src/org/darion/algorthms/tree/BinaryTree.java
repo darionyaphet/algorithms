@@ -1,29 +1,31 @@
 package org.darion.algorthms.tree;
 
+import org.darion.algorthms.tree.StringTreeNode;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class BinaryTree {
 
-	private static TreeNode<String> root;
-
 	public BinaryTree() {
 
 	}
 
-	public TreeNode<String> addNode(TreeNode<String> root, String element) {
+	public StringTreeNode addNode(StringTreeNode root, String element) {
 		if (element == null) {
 			throw new IllegalArgumentException("Element Should NOT NULL ! ");
 		}
 
 		if (root == null) {
-			root = new TreeNode<String>(element, null, null);
+			root = new StringTreeNode(element, null, null);
 			return root;
 		} else {
-			int result = root.getElement().compareTo(element);
-			if (result < 0) {
+
+			StringTreeNode newNode = new StringTreeNode(element, null, null);
+			int result = root.compareTo(newNode);
+
+			if (result > 0) {
 				root.setRight(addNode(root.getRight(), element));
-			} else if (result > 0) {
+			} else if (result < 0) {
 				root.setLeft(addNode(root.getLeft(), element));
 			} else {
 				System.out.println("Equal with root-node ...");
@@ -41,41 +43,27 @@ public class BinaryTree {
 		return true;
 	}
 
-	public void levelyTraversal() {
-		Queue<TreeNode<String>> queue = new LinkedBlockingQueue<TreeNode<String>>();
+	public void levelyTraversal(StringTreeNode root) {
+		Queue<StringTreeNode> queue = new LinkedBlockingQueue<StringTreeNode>();
 		queue.add(root);
 
 		while (!queue.isEmpty()) {
-			System.out.println("size : " + queue.size());
-			TreeNode<String> currentRoot = queue.poll();
-			if (currentRoot != null) {
-				
-				System.out.println(root);
-				
-				if (currentRoot.hasLeft()) {
-					System.out.println("L : " + root.getLeft());
+			// System.out.println("size : " + queue.size());
+			root = queue.poll();
+			if (root != null) {
+
+				System.out.print(root + " ");
+
+				if (root.hasLeft()) {
 					queue.add(root.getLeft());
 				}
-				
-				if (currentRoot.hasRight()) {
-					System.out.println("R : " + root.getRight());
+
+				if (root.hasRight()) {
 					queue.add(root.getRight());
 				}
 			}
 		}
-
+		System.out.println();
 	}
 
-	public static void main(String[] args) {
-		BinaryTree tree = new BinaryTree();
-		root = tree.addNode(root, "5");
-		root = tree.addNode(root, "4");
-		root = tree.addNode(root, "6");
-
-		// System.out.println(root);
-		// System.out.println(root.getLeft());
-		// System.out.println(root.getRight());
-		tree.levelyTraversal();
-
-	}
 }
