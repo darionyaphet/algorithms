@@ -1,7 +1,8 @@
 package org.darion.leetcode;
 
 public class TreeNode {
-	int val = 0;
+	int val;
+	
 	TreeNode left;
 	TreeNode right;
 
