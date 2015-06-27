@@ -1,6 +1,12 @@
 package org.darion.yaphet.lintcode;
 
-public class a_b_problem {
+/**
+ * http://www.lintcode.com/zh-cn/problem/a-b-problem/
+ * 
+ * @author darion.yaphet
+ * 
+ */
+public class ABProblem {
 	/*
 	 * param a: The first integer param b: The second integer return: The sum of
 	 * a and b
