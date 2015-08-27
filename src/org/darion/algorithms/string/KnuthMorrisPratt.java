@@ -1,4 +1,4 @@
-package org.darion.algorthms.string;
+package org.darion.algorithms.string;
 
 public class KnuthMorrisPratt {
 

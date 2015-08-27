@@ -1,4 +1,4 @@
-package org.darion.algorthms.tree;
+package org.darion.algorithms.tree;
 
 public class BinaryTreeMain {
 	public static void main(String[] args) {

@@ -5,4 +5,4 @@
  * @author 2011204
  *
  */
-package org.darion.algorthms.string;
+package org.darion.algorithms.string;

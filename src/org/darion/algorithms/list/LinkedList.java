@@ -1,4 +1,4 @@
-package org.darion.algorthms.list;
+package org.darion.algorithms.list;
 
 public class LinkedList {
 	private String[] array;

@@ -5,4 +5,4 @@
  * @author darion
  *
  */
-package org.darion.algorthms.list;
+package org.darion.algorithms.tree;

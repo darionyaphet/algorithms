@@ -1,4 +1,4 @@
-package org.darion.algorthms.list;
+package org.darion.algorithms.list;
 
 public class LinkedListMain {
 	public static void main(String[] args) {

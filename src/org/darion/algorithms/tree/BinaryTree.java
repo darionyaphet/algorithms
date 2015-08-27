@@ -1,8 +1,9 @@
-package org.darion.algorthms.tree;
+package org.darion.algorithms.tree;
 
-import org.darion.algorthms.tree.StringTreeNode;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
+
+import org.darion.algorithms.tree.StringTreeNode;
 
 public class BinaryTree {
 
