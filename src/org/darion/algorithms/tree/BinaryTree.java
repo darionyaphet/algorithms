@@ -1,11 +1,12 @@
 package org.darion.algorithms.tree;
 
+import java.util.Comparator;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import org.darion.algorithms.tree.StringTreeNode;
 
-public class BinaryTree {
+public class BinaryTree implements Comparator<StringTreeNode> {
 
 	public BinaryTree() {
 
@@ -44,12 +45,39 @@ public class BinaryTree {
 		return true;
 	}
 
+	private void visit(StringTreeNode node) {
+
+	}
+
+	public void preOrderTraversal(StringTreeNode root) {
+
+	}
+
+	public void inOrderTraversal(StringTreeNode root) {
+
+	}
+
+	public void postOrderTraversal(StringTreeNode root) {
+
+	}
+
+	public void preOrderRecursiveTraversal(StringTreeNode root) {
+
+	}
+
+	public void inOrderRecursiveTraversal(StringTreeNode root) {
+
+	}
+
+	public void postOrderRecursiveTraversal(StringTreeNode root) {
+
+	}
+
 	public void levelyTraversal(StringTreeNode root) {
 		Queue<StringTreeNode> queue = new LinkedBlockingQueue<StringTreeNode>();
 		queue.add(root);
 
 		while (!queue.isEmpty()) {
-			// System.out.println("size : " + queue.size());
 			root = queue.poll();
 			if (root != null) {
 
@@ -65,6 +93,12 @@ public class BinaryTree {
 			}
 		}
 		System.out.println();
+	}
+
+	@Override
+	public int compare(StringTreeNode origin, StringTreeNode other) {
+
+		return 0;
 	}
 
 }

@@ -29,7 +29,7 @@ public class BinaryTreeMain {
 		root = tree.addNode(root, "6");
 		root = tree.addNode(root, "10");
 
-		System.out.println("Builded a Binary Tree");
+		System.out.println("Createed a Binary Tree");
 		System.out.println("Root  : "+root.getElement());
 		System.out.println("Left  : "+root.getLeft().getElement());
 		System.out.println("Right : "+root.getRight().getElement());

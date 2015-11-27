@@ -6,8 +6,7 @@ public class StringTreeNode extends AbstractTreeNode<StringTreeNode> {
 	private StringTreeNode leftNode;
 	private StringTreeNode rightNode;
 
-	public StringTreeNode(String element, StringTreeNode left,
-			StringTreeNode right) {
+	public StringTreeNode(String element, StringTreeNode left, StringTreeNode right) {
 		this.element = element;
 		this.leftNode = left;
 		this.rightNode = right;
