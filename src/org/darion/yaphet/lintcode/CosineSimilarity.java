@@ -54,16 +54,22 @@ public class CosineSimilarity {
 			// BigDecimal.ROUND_HALF_UP).doubleValue();
 			return 2.0000D;
 		}
-		BigDecimal decimal = new BigDecimal(molecular / denominator);
-		return decimal.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();
+
+		System.out.println(molecular + " --> " + denominator);
+
+		String result = (molecular / denominator) + "";
+		// BigDecimal decimal = new BigDecimal(molecular / denominator);
+		// return decimal.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();
+		System.out.println(String.format(result, "%.4f"));
+		return 0;
 	}
 
 	public static void main(String[] args) {
-		// int[] A = { 1, 2, 3 };
-		// int[] B = { 2, 3, 4 };
+		int[] A = { 1, 2, 3 };
+		int[] B = { 2, 3, 4 };
 
-		int[] A = { 0 };
-		int[] B = { 0 };
+		// int[] A = { 0 };
+		// int[] B = { 0 };
 		CosineSimilarity instance = new CosineSimilarity();
 		System.out.println(instance.cosineSimilarity(A, B));
 
