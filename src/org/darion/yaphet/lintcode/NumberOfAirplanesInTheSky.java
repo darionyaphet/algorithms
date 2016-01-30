@@ -4,6 +4,12 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * http://www.lintcode.com/problem/number-of-airplanes-in-the-sky
+ * 
+ * @author darion.johannes.yaphet
+ *
+ */
 public class NumberOfAirplanesInTheSky {
 	/**
 	 * @param intervals:
@@ -39,6 +45,7 @@ public class NumberOfAirplanesInTheSky {
 
 		}
 
+		System.out.println(Arrays.toString(count));
 		int result = count[0];
 		for (int index = 1; index < max; index++) {
 			if (result < count[index]) {
