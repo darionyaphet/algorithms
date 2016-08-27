@@ -41,7 +41,7 @@ public class LongestWords {
 	}
 
 	public static void main(String[] args) {
-		// final String[] dictionary = { "dog", "google", "facebook",
+		// final String[] dictionary = { "dog", "Google", "facebook",
 		// "internationalization", "blabla" };
 		// final String[] dictionary = { "like", "love", "hate", "yes" };
 		// final String[] dictionary = null;
