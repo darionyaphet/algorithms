@@ -1,58 +1,32 @@
 package org.darion.yaphet.lintcode;
 
-import java.util.Arrays;
-
 /**
  * http://www.lintcode.com/zh-cn/problem/space-replacement/
- * 
- * @author darion.yaphet
- * 
  */
 public class SpaceReplacement {
-	/**
-	 * @param string
-	 *            : An array of Char
-	 * @param length
-	 *            : The true length of the string
-	 * @return: The true length of new string
-	 */
-	public int replaceBlank(char[] string, int length) {
 
-		if (string == null) {
-			return 0;
-		}
+    public static int replaceBlank(char[] string, int length) {
+        int newLength = length;
+        int space = 0;
+        for (int i = 0; i < length; i++) {
+            if (string[i] == ' ')
+                space++;
+        }
+        newLength = newLength + space * 2;
+        int index = newLength;
+        for (int i = length - 1; i >= 0; i--) {
+            if (string[i] == ' ') {
+                string[--index] = '0';
+                string[--index] = '2';
+                string[--index] = '%';
+            } else
+                string[--index] = string[i];
+        }
+        return newLength;
+    }
 
-		int spaceNumber = 0;
-		for (char element : string) {
-			if (element == ' ') {
-				spaceNumber += 1;
-			}
-		}
-
-		char[] array = new char[string.length + 2 * spaceNumber];
-		System.arraycopy(string, 0, array, 0, length);
-		// System.out.println(Arrays.toString(array));
-		// System.out.println(array.length);
-
-		int index = array.length - 1;
-		for (int i = string.length - 1; i >= 0; i--) {
-			if (string[i] == ' ') {
-				array[index--] = '0';
-				array[index--] = '2';
-				array[index--] = '%';
-			} else {
-				array[index--] = string[i];
-			}
-		}
-		return array.length;
-	}
-
-	public static void main(String[] args) {
-		SpaceReplacement instance = new SpaceReplacement();
-		// String input = "Mr John Smith";
-		char[] input = "hello world".toCharArray();
-		int size = instance.replaceBlank(input, input.length);
-		System.out.println(Arrays.toString(input));
-		System.out.println(size);
-	}
+    public static void main(String[] args) {
+        String input = "hello world";
+        System.out.println(replaceBlank(input.toCharArray(), 11));
+    }
 }

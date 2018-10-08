@@ -1,42 +1,31 @@
 package org.darion.yaphet.lintcode;
 
-import java.math.BigInteger;
-
+/**
+ * http://www.lintcode.com/zh-cn/problem/hash-function/
+ */
 public class HashFunction {
-	/**
-	 * @param key
-	 *            : A String you should hash
-	 * @param HASH_SIZE
-	 *            : An integer
-	 * @return an integer
-	 */
-	public int hashCode(char[] key, int HASH_SIZE) {
-		// write your code here
-		// long sum = 0;
-		BigInteger sum = BigInteger.ZERO;
-		int size = key.length - 1;
+    public static int hashCode(char[] key, int HASH_SIZE) {
+        if (key == null || key.length == 0) {
+            return -1;
+        }
 
-		for (int index = 0; index < key.length; index++) {
-			// sum += (key[index]) * Math.pow(33, size - index);
-			// BigInteger base = new BigInteger(index+)
-			// BigInteger integer =
-			
-			for (int j = 0; j < size - index; j++) {
-				
-			}
-			sum = sum.multiply(new BigInteger((key[index])
-					* Math.pow(33, size - index) + ""));
-			// System.out.println((int) key[index] + "\t" + "33^" + (size -
-			// index)
-			// + " --> " + sum);
-		}
+        int size = key.length;
 
-		return sum.mod(new BigInteger(HASH_SIZE + "")).intValue();
-	}
+        long code = 0;
+        long base = 1;
 
-	public static void main(String[] args) {
-		HashFunction function = new HashFunction();
-		System.out.println(function.hashCode(
-				"abcdefghijklmnopqrstuvwxyz".toCharArray(), 2607));
-	}
+        for (int i = size - 1; i >= 0; i--) {
+            code += (key[i] * base) % HASH_SIZE;
+            code %= HASH_SIZE;
+            base = base * 33 % HASH_SIZE;
+        }
+
+        return (int) code;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(hashCode("abcd".toCharArray(), 100));
+        System.out.println(hashCode("ubuntu".toCharArray(), 1007));
+        System.out.println(hashCode("abcdefghijklmnopqrstuvwxyz".toCharArray(), 2607)); // 1673
+    }
 }

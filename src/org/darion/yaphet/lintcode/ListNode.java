@@ -1,11 +1,10 @@
 package org.darion.yaphet.lintcode;
 
 public class ListNode {
-	public int val;
-	public ListNode next;
+    int val;
+    ListNode next;
 
-	public ListNode(int val) {
-		this.val = val;
-		this.next = null;
-	}
+    ListNode(int x) {
+        val = x;
+    }
 }

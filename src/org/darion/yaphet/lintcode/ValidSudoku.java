@@ -1,84 +1,89 @@
 package org.darion.yaphet.lintcode;
 
+
 import java.util.Arrays;
 
-/**
- * http://www.lintcode.com/zh-cn/problem/valid-sudoku/
- * 
- * @author darion.yaphet
- * 
- */
 public class ValidSudoku {
-	/**
-	 * @param board
-	 *            : the board
-	 * @return: wether the Sudoku is valid
-	 */
-	public boolean isValidSudoku(char[][] board) {
-		if (board == null) {
-			return false;
-		}
+    public static boolean isValidSudoku(char[][] board) {
+        if (board == null) {
+            return false;
+        }
 
-		int size = board.length;
-		for (char[] row : board) {
-			if (row.length != size) {
-				return false;
-			}
-		}
+        for (int i = 0; i < 9; i++) {
+            boolean[] flags = new boolean[10];
+            for (int j = 0; j < 9; j++) {
+                if ('.' == board[i][j]) {
+                    continue;
+                }
+                int index = board[i][j] - 48;
+                if (!flags[index]) {
+                    flags[index] = true;
+                } else {
+                    return false;
+                }
+            }
+        }
 
-		final int SIZE = board.length;
-		for (int i = 0; i < SIZE; i++) {
-			for (int j = 0; j < SIZE; j++) {
-				// System.out.println(i + "  " + j);
-				char element = board[i][j];
+        for (int j = 0; j < 9; j++) {
+            boolean[] flags = new boolean[10];
+            for (int i = 0; i < 9; i++) {
+                if ('.' == board[i][j]) {
+                    continue;
+                }
 
-				if ('.' == element) {
-					continue;
-				}
+                int index = board[i][j] - 48;
+                if (!flags[index]) {
+                    flags[index] = true;
+                } else {
+                    return false;
+                }
+            }
+        }
 
-				for (int k = 0; k < SIZE; k++) {
-					// System.out.println("K " + k);
-					if ('.' != board[i][k] && element == board[i][k]) {
-						if (k == j) {
-							continue;
-						}
-						// System.out.println(1);
-						return false;
-					}
+        for (int i = 0; i < 9; i += 3) {
+            for (int j = 0; j < 9; j += 3) {
+                boolean[] flags = new boolean[10];
+                for (int k = 0; k < 9; k++) {
+                    if (board[i + k / 3][j + k % 3] == '.') {
+                        continue;
+                    }
 
-					if ('.' != board[k][j] && element == board[k][j]) {
-						if (k == i) {
-							continue;
-						}
-						// System.out.println(2);
-						return false;
-					}
-				}
-			}
-		}
+                    int num = board[i + k / 3][j + k % 3] - '0';
+                    if (num < 1 || num > 9 || flags[num - 1]) {
+                        return false;
+                    } else {
+                        flags[num - 1] = true;
+                    }
+                }
+            }
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	public static void main(String[] args) {
-		String[] array = { ".87654321", "2........", "3........", "4........",
-				"5........", "6........", "7........", "8........", "9........" };
+    public static void main(String[] args) {
+//
+//                "....5..1.",
+//                ".4.3.....",
+//                ".....3..1",
+//                "8......2.",
+//                "..2.7....",
+//                ".15......",
+//                ".....2...",
+//                ".2.9.....",
+//                "..4......"
 
-		char[][] board = new char[9][9];
-
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
-				board[i][j] = array[i].charAt(j);
-			}
-		}
-
-		for (int index = 0; index < 9; index++) {
-			System.out.println(Arrays.toString(board[index]));
-		}
-
-		ValidSudoku instance = new ValidSudoku();
-		System.out.println(instance.isValidSudoku(board));
-		// boolean[] founded = new boolean[9];
-		// System.out.println(Arrays.toString(founded));
-	}
+        char[][] array = {
+                {'.', '.', '.', '.', '5', '.', '.', '1', '.'},
+                {'.', '4', '.', '3', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.', '3', '.', '.', '1'},
+                {'8', '.', '.', '.', '.', '.', '.', '2', '.'},
+                {'.', '.', '2', '.', '7', '.', '.', '.', '.'},
+                {'.', '1', '5', '.', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.', '2', '.', '.', '.'},
+                {'.', '2', '.', '9', '.', '.', '.', '.', '.'},
+                {'.', '.', '4', '.', '.', '.', '.', '.', '.'}
+        };
+        System.out.println(isValidSudoku(array));
+    }
 }

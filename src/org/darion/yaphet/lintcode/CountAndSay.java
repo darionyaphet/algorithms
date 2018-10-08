@@ -1,43 +1,37 @@
 package org.darion.yaphet.lintcode;
 
-/**
- * http://www.lintcode.com/zh-cn/problem/count-and-say/
- * 
- * @author darion.yaphet
- * 
- */
-public class CountAndSay {
-	/**
-	 * @param n
-	 *            the nth
-	 * @return the nth sequence
-	 */
-	public String countAndSay(int n) {
-		if (n <= 0) {
-			return "";
-		} else {
-			String before = "1";
-			for (int index = 2; index <= n; index++) {
-				int count = 0;
-				char current = before.charAt(0);
-				StringBuilder builder = new StringBuilder();
-				for (int i = 0; i < before.length(); i++) {
-					if (current == before.charAt(i)) {
-						count += 1;
-					} else {
-						builder = builder.append(count).append(current);
-						current = before.charAt(i);
-						count = 1;
-					}
-				}
-				before = builder.append(count).append(current).toString();
-			}
-			return before;
-		}
-	}
+import java.util.HashMap;
+import java.util.Map;
 
-	public static void main(String[] args) {
-		CountAndSay instance = new CountAndSay();
-		System.out.println(instance.countAndSay(5));
-	}
+public class CountAndSay {
+    public String countAndSay(int n) {
+        String result = "1";
+
+        for (int i = 1; i < n; i++) {
+            char[] chars = result.toCharArray();
+            char c = chars[0];
+            int count = 1;
+            StringBuilder builder = new StringBuilder();
+
+            for (int index = 1; index < chars.length; index++) {
+                if (chars[index] == c) {
+                    count += 1;
+                } else {
+                    builder.append(count);
+                    builder.append(c);
+                    c = chars[index];
+                    count = 1;
+                }
+            }
+            builder.append(count);
+            builder.append(c);
+            result = builder.toString();
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        CountAndSay instance = new CountAndSay();
+        System.out.println(instance.countAndSay(3));
+    }
 }
